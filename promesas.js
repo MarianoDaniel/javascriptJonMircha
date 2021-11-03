@@ -9,6 +9,7 @@ function cuadradoPromise(value) {
         }, 1000);
     })
 }
+
 cuadradoPromise(5)
     .then(obj => {
         //console.log(obj)
