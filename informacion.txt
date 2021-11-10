@@ -1,4 +1,5 @@
-https://www.youtube.com/watch?v=N00DzBNPJEw&list=PLvq-jIkSeTUZ6QgYYO3MwG9EMqC-KoLXA&index=54
+https://www.youtube.com/watch?v=7njrLMJgDtQ&list=PLvq-jIkSeTUZ6QgYYO3MwG9EMqC-KoLXA&index=56
+https://youtu.be/7njrLMJgDtQ?t=546
 
 mdn truthy ... esto puedo googlear y me muestra cuales valores tienden a falso o a verdadero dentro de un if ... por ejemplo un 0 es falso
 
