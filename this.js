@@ -32,7 +32,7 @@ const obj3 = {
         console.log(this.nombre)
     }
 }
-//la arrow function apunta al objeto global, mantiene un enlace del contexto en el que ha sido creado el objeto donde aparece. La arrow function no maneja su propio scope 
+//la arrow function apunta al objeto global, mantiene un enlace del contexto en el que ha sido creado el objeto donde aparece. La arrow function no maneja su propio scop. se salta el scope en el que ha sido creado. Como obj3 se creó en el contexto global, toma ese contexto 
 obj3.imprimir()
 
 function Persona(nombre) {
@@ -43,7 +43,6 @@ function Persona(nombre) {
     } */
     
     return () => console.log(this.nombre)
-
 }
 
 const p = new Persona("Mariano")
