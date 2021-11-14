@@ -37,7 +37,7 @@ mapa.set(19,"diecinueve")
 mapa.set(false,"falso")
 mapa.set({},{})
 console.log(mapa)
-
+//Se debe convertir en array para iterarlo
 let mapaToArray = Array.from(mapa)
 console.log("mapa to array", mapaToArray)
 

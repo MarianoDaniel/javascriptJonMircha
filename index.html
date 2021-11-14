@@ -6,6 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width= , initial-scale=1.0">
     <title>Fundamentos JavaScript</title>
+    <style>
+        :root {
+            --yellow-color: #F7DF1E;
+            --dark-color: #222;
+        }
+        .cards {
+            border: thin solid var(--dark-color);
+            padding: 1rem;
+        }
+
+        .card {
+            display: inline-block;
+            background-color: var(--dark-color);
+            color: var(--yellow-color);
+        }
+
+        .card figcaption {
+            padding: 1rem;
+        }
+
+        .rotate-45 {
+            transform: rotate(45deg)
+        }
+        .opacity-80{
+            opacity: 8;
+        }
+        .sepia {
+            filter: sepia(1);
+        }
+
+        .rotate-135 {
+            transform: rotate(135deg)
+        }
+    </style>
 
 </head>
 
@@ -53,15 +87,57 @@
     <script src="propiedadesDinamicas.js"></script>
     <script src="this.js"></script>
     <script src="callApplyBind.js"></script>
+    <script src="json.js"></script>
+    <script src="webAPIs.js"></script>
 
     -->
-  
-    <script src="json.js"></script>
+
+    <br>
+    <hr>
+    <br>
+
+    <h3>Manejo del DOM</h3>
+    <p id="que-es">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni maiores sint eum qui expedita ad? Rem eveniet
+        nam aperiam laudantium. Repellendus tempora natus voluptate quis doloribus magni quam iure corrupti.
+
+    </p>
+    <!--nav#menu>ul>li*5>a{Sección$} -->
+    <nav id="menu">
+        <ul>
+            <li><a href="#">Sección1</a></li>
+            <li><a href="#">Sección2</a></li>
+            <li><a href="#">Sección3</a></li>
+            <li><a href="#">Sección4</a></li>
+            <li><a href="#">Sección5</a></li>
+        </ul>
+    </nav>
+    <input type="text" name="nombre" placeholder="Nombre">
+
+    <a class="link-dom" href="index.html" data-description="Document Object Model"
+        style="background-color: #f7df1e; color: #222;" data-id="1">DOM</a>
+    <section class="cards">
+        <figure class="card">
+            <img src="https://placeimg.com/200/200/tech" alt="Tech">
+            <figcaption>Tech</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://placeimg.com/200/200/animals" alt="Animals">
+            <figcaption>Animals</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://placeimg.com/200/200/people" alt="People">
+            <figcaption>People</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://placeimg.com/200/200/nature" alt="Nature">
+            <figcaption>Nature</figcaption>
+        </figure>
+    </section>
 
 
 
-
-
+    <script src="dom.js"></script>
 
 
 
