@@ -240,7 +240,7 @@ console.log($cards.children[3].closest("section"))
 
 //Curso JavaScript: 68. DOM: Creando Elementos y Fragmentos
 
-const $figure = document.createElement("figure"),
+/* const $figure = document.createElement("figure"),
     $img = document.createElement("img"),
     $figcaption = document.createElement("figcaption"),
     $figcaptionText = document.createTextNode("Animals"),
@@ -320,4 +320,50 @@ const $ul3 = document.createElement("ul"),
     //Agrego a $ul3 el fragmento del DOM con todos los elementos que le metí 
     $ul3.appendChild($fragment)
     //por último se realiza la inyección de un tirón al DOM, evitando las inyecciones continuas que hacíamos en el foreach anterior a este ejemplo
-    document.body.appendChild($ul3)
+    document.body.appendChild($ul3) */
+
+
+//Curso JavaScript: 69. DOM: Templates HTML
+
+//Etiquetas que no se visualizan    
+
+const $cards = document.querySelector(".cards"),
+    $template = document.getElementById("template-card").content, //.content trae el contenido no la etiqueta
+    $fragment = document.createDocumentFragment(),
+    cardContent = [
+        {
+            title: "Tecnología",
+            img: "https://placeimg.com/200/200/tech"
+        },
+        {
+            title: "Animales",
+            img: "https://placeimg.com/200/200/animals"
+        },
+        {
+            title: "Arquitectura",
+            img: "https://placeimg.com/200/200/arch"
+        },
+        {
+            title: "Gente",
+            img: "https://placeimg.com/200/200/people"
+        },
+        {
+            title: "Naturaleza",
+            img: "https://placeimg.com/200/200/nature"
+        }
+    ]
+
+cardContent.forEach(el => {
+    $template.querySelector("img").setAttribute("src", el.img)
+    $template.querySelector("img").setAttribute("alt", el.title)
+    $template.querySelector("figcaption").textContent = el.title
+
+    //Vamos a clonar el template para poder generar varios y utilizarlos
+    //Le pasamos true al segundo parametro para que copie toda la estructura, de locontrario solo copia la etiqueta
+    let $clone = document.importNode($template, true)
+    $fragment.appendChild($clone)
+})
+$cards.appendChild($fragment)
+console.log($template)
+
+//Curso JavaScript: 70. DOM: Modificando Elementos (Old Style) 
