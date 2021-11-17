@@ -327,7 +327,7 @@ const $ul3 = document.createElement("ul"),
 
 //Etiquetas que no se visualizan    
 
-const $cards = document.querySelector(".cards"),
+/* const $cards = document.querySelector(".cards"),
     $template = document.getElementById("template-card").content, //.content trae el contenido no la etiqueta
     $fragment = document.createDocumentFragment(),
     cardContent = [
@@ -360,10 +360,39 @@ cardContent.forEach(el => {
 
     //Vamos a clonar el template para poder generar varios y utilizarlos
     //Le pasamos true al segundo parametro para que copie toda la estructura, de locontrario solo copia la etiqueta
+    //importa el modelo a seguir que está en el html
     let $clone = document.importNode($template, true)
     $fragment.appendChild($clone)
 })
 $cards.appendChild($fragment)
-console.log($template)
+console.log($template) */
 
-//Curso JavaScript: 70. DOM: Modificando Elementos (Old Style) 
+//Curso JavaScript: 70. DOM: Modificando Elementos (Old Style)  
+
+const $cards = document.querySelector(".cards"),
+    $newCard = document.createElement("figure"),
+    $cloneCards = $cards.cloneNode(true); //generar dinamicamente un clon
+
+$newCard.innerHTML = `<img src= "https://placeimg.com/200/200/any" alt="Any"
+<figcaption>Any</figcaption>
+`
+//le agrego una nueva clase
+$newCard.classList.add("card")
+
+//remplazamos un hijo. Se le pasa primero el nuevo y después el que va a ser remplazado
+//$cards.replaceChild($newCard,$cards.children[2])
+
+//Si queremos insertar la card antes
+//$cards.insertBefore($newCard,$cards.firstElementChild)
+
+//Para eliminar
+//$cards.removeChild($cards.lastElementChild)
+
+//agrego al body el clon de cards
+document.body.appendChild($cloneCards)
+
+//Curso JavaScript: 71. DOM: Modificando Elementos (Cool Style)
+
+
+
+
