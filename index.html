@@ -11,6 +11,7 @@
             --yellow-color: #F7DF1E;
             --dark-color: #222;
         }
+
         .cards {
             border: thin solid var(--dark-color);
             padding: 1rem;
@@ -29,15 +30,35 @@
         .rotate-45 {
             transform: rotate(45deg)
         }
-        .opacity-80{
+
+        .opacity-80 {
             opacity: 8;
         }
+
         .sepia {
             filter: sepia(1);
         }
 
         .rotate-135 {
             transform: rotate(135deg)
+        }
+
+        .eventos-flujo div {
+            padding: 4rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .uno {
+            background-color: yellow;
+        }
+
+        .dos {
+            background-color: gold;
+        }
+
+        .tres {
+            background-color: lightyellow;
         }
     </style>
 
@@ -146,18 +167,31 @@
             </figcaption>
         </figure>
     </template>
-        <h3>Eventos en javaScript</h3>
-        <h4>Manejadores de Eventos</h4>
-        <button onclick="holaMundo()">Evento con atributo HTML</button>
-        <br><br>
-        <button id="evento-semantico">Evento con manejador semántico</button>
-        <br><br>
-        <button id="evento-multiple">Evento con manejador múltiple</button>
-        <br><br>
-        <button id="evento-remover">Removiendo eventos con manejadores múltiples</button>
+    <h3>Eventos en javaScript</h3>
+    <h4>Manejadores de Eventos</h4>
+    <button onclick="holaMundo()">Evento con atributo HTML</button>
+    <br><br>
+    <button id="evento-semantico">Evento con manejador semántico</button>
+    <br><br>
+    <button id="evento-multiple">Evento con manejador múltiple</button>
+    <br><br>
+    <button id="evento-remover">Removiendo eventos con manejadores múltiples</button>
+    <br><br>
+    <h4>Flujo de eventos</h4>
+    <section class="eventos-flujo">
+        <div class="uno">
+            1
+            <div class="dos">
+                2
+                <div class="tres">
+                    3
+                    <a href="https://jonmircha.com/" target="_blank" rel="noopener">Jonmircha.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-    <script src="DOM Eventos-con-Parámetros-y-Remover-Eventos.js"></script>
+    <script src="DOM-Delegación-de-Eventos.js"></script>
 
 
 
