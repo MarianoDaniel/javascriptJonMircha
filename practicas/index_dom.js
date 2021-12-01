@@ -1,3 +1,4 @@
+import countdown from "./cuenta_regresiva.js";
 import hamburguerMenu from "./menu_hamburguesa.js";
 import { relojYalarma, alarm } from "./reloj_y_alarma.js";
 //import { shortcuts } from "./teclado.js";
@@ -10,6 +11,10 @@ d.addEventListener("DOMContentLoaded", e => {
     hamburguerMenu(".panel-btn", ".panel", ".menu a")
     relojYalarma("#iniciar-reloj", "#detener-reloj", "#panel-reloj p", "#panel-reloj")
     alarm("assets/alarm.mp3", "#iniciar-alarma", "#detener-alarma")
+    countdown(
+        "countdown",
+        "May 23,2022 03:23:19",
+        "Feliz cumpleaños amigo y docente digital 🤓🤓🤓")
 })
 d.addEventListener("keydown", e => {
     //shortcuts(e)

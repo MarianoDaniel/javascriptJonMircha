@@ -1,5 +1,6 @@
 
 https://codepen.io/
+https://emojipedia.org/
 
 mdn truthy ... esto puedo googlear y me muestra cuales valores tienden a falso o a verdadero dentro de un if ... por ejemplo un 0 es falso
 
