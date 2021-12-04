@@ -11,7 +11,7 @@ export default function countdown(id, limitDate, finalMessage) {
             minutes = ("0" + Math.floor(limitTime % (1000 * 60 * 60) / (1000 * 60))).slice(-2),
             seconds = ("0" + Math.floor(limitTime % (1000 * 60) / (1000))).slice(-2);
         $countdown.innerHTML = `<h3>Faltan: ${days} días ${hours} horas ${minutes} minutos ${seconds} segundos</h3>`
-        if(limitTime<0){
+        if (limitTime < 0) {
             clearInterval(countdownTempo)
             $countdown.innerHTML = `<h3>${finalMessage}</h3>`
         }
