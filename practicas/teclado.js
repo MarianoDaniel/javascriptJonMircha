@@ -7,11 +7,7 @@ export function moveBall(e, ball, stage) {
         //Colisiones
         limitsBall = $ball.getBoundingClientRect(),
         limitStage = $stage.getBoundingClientRect();
-    console.log(limitsBall)
-    console.log(limitStage)
 
-    console.log(e.key)
-    console.log(e.keyCode)
 
     //función que va a recibir la dirección y en base a eso se toman las decisiones
 

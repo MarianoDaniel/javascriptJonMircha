@@ -10,8 +10,6 @@ export default function responsiveMedia(id, mq, mobileContent, desktopContent) {
             d.getElementById(id).innerHTML = mobileContent 
 
         }
-        console.log(e)
-        console.log(brackpoint)
     }
     brackpoint.addEventListener('change', responsive)
     //para que tome los cambios ni bien carga la página
