@@ -62,7 +62,6 @@ export default function userDeviceInfo(id) {
     if(isMobile.android()){
        window.location.href = "https://jonmircha.com"
     }
-console.log("Connection", navigator.connection)
-console.log("onLine", navigator.onLine)
+
 
 }
