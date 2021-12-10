@@ -9,6 +9,9 @@ export default function webCam(id) {
                 //con srcObject le puedo pasar el objeto entero a la etiqueta, pero si yo nada mas lo dejo así al momento que se prende la camara solo queda una foto... si quiero que el video se vea hay que ejecutare el método play
                 $video.srcObject = strem
                 $video.play()
-            }).catch(err => console.log(`Sucedió un error! ${err}`))
+            }).catch(err => {
+                $video.insertAdjacentHTML("beforebegin", `Sucedió un error: <p><mark>${err}</mark></p>`)
+                console.log(`Sucedió un error! ${err}`)
+            })
     }
 }
