@@ -1,13 +1,16 @@
 import scrollTopButton from "./botton_scroll.js";
+import slider from "./carrusel.js";
 import countdown from "./cuenta_regresiva.js";
 import userDeviceInfo from "./deteccion_dispositivos.js";
 import networkStatus from "./deteccion_red.js";
 import webCam from "./deteccion_webcam.js";
+import searchFilters from "./filtro_busquedas.js";
 import getGeolocation from "./geolocalizacion.js";
 import hamburguerMenu from "./menu_hamburguesa.js";
 import responsiveMedia from "./objeto_responsive.js";
 import { relojYalarma, alarm } from "./reloj_y_alarma.js";
 import responsiveTester from "./responsive_tester.js";
+import draw from "./sorteo.js";
 //import { shortcuts } from "./teclado.js";
 import { moveBall } from "./teclado.js";
 import darkTheme from "./tema_oscuro.js";
@@ -39,6 +42,9 @@ d.addEventListener("DOMContentLoaded", e => {
     userDeviceInfo("user-device")
     webCam("webcam")
     getGeolocation("geolocation")
+    searchFilters(".card-filter",".card")
+    draw("#winner-btn",".player")
+    slider()
 })
 d.addEventListener("keydown", e => {
     //shortcuts(e)
