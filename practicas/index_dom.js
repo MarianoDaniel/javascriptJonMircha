@@ -10,10 +10,12 @@ import hamburguerMenu from "./menu_hamburguesa.js";
 import responsiveMedia from "./objeto_responsive.js";
 import { relojYalarma, alarm } from "./reloj_y_alarma.js";
 import responsiveTester from "./responsive_tester.js";
+import scrollSpy from "./scroll_espia.js";
 import draw from "./sorteo.js";
 //import { shortcuts } from "./teclado.js";
 import { moveBall } from "./teclado.js";
 import darkTheme from "./tema_oscuro.js";
+import smartVideo from "./video_inteligente.js";
 
 //Vamos a cargarlo con el DOMContentLoaded
 const d = document
@@ -45,6 +47,8 @@ d.addEventListener("DOMContentLoaded", e => {
     searchFilters(".card-filter",".card")
     draw("#winner-btn",".player")
     slider()
+    scrollSpy()
+    smartVideo()
 })
 d.addEventListener("keydown", e => {
     //shortcuts(e)

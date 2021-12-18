@@ -10,7 +10,6 @@ export default function getGeolocation(id) {
             maximunAge: 0
         };
     const success = (position) => {
-        console.log(position)
         let coords = position.coords
         $id.innerHTML = `
         <p>Tu posición actual es:</p>

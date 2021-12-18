@@ -10,3 +10,5 @@ https://aprendejavascript.org/
 https://jonmircha.com/
 EJERCICIOS:
 Termino todo DOM y hago una práctica
+
+https://coverr.co/ videos y audio gratuitos
