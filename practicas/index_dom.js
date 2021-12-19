@@ -7,6 +7,7 @@ import webCam from "./deteccion_webcam.js";
 import searchFilters from "./filtro_busquedas.js";
 import getGeolocation from "./geolocalizacion.js";
 import hamburguerMenu from "./menu_hamburguesa.js";
+import speechReader from "./narrador.js";
 import responsiveMedia from "./objeto_responsive.js";
 import { relojYalarma, alarm } from "./reloj_y_alarma.js";
 import responsiveTester from "./responsive_tester.js";
@@ -15,6 +16,7 @@ import draw from "./sorteo.js";
 //import { shortcuts } from "./teclado.js";
 import { moveBall } from "./teclado.js";
 import darkTheme from "./tema_oscuro.js";
+import contactFormValidations from "./validaciones_formulario.js";
 import smartVideo from "./video_inteligente.js";
 
 //Vamos a cargarlo con el DOMContentLoaded
@@ -49,9 +51,12 @@ d.addEventListener("DOMContentLoaded", e => {
     slider()
     scrollSpy()
     smartVideo()
+    contactFormValidations()
 })
 d.addEventListener("keydown", e => {
     //shortcuts(e)
     moveBall(e, ".ball", ".stage")
 })
+
 networkStatus()
+speechReader()
