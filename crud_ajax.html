@@ -19,7 +19,7 @@
                 <input type="text" name="constelacion" placeholder="constelacion" required>
                 <br>
                 <input type="submit" value="enviar">
-                <input type="hidden" name="action">
+                <input type="hidden" name="id">
             </form>
         </article>
         <article>
@@ -56,7 +56,113 @@
             //.content, adquiero el contenido del template que es lo que necesito
             $template = d.querySelector(".crud-template").content,
             $fragment = d.createDocumentFragment();
+        //Me armo una función ajax para reutilizar segun las options que le pase
+        const ajax = (options) => {
+            let { url, method, success, error, data } = options
+            const xhr = new XMLHttpRequest()
+            xhr.addEventListener("readystatechange", e => {
+                if (xhr.readyState !== 4) return
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    let json = JSON.parse(xhr.responseText)
+                    success(json)
+                } else {
+                    let message = xhr.statusText || "Ocurrió un error"
+                    error(`Error ${xhr.status}: ${message}`)
+                }
+            })
 
+            xhr.open(method || "GET", url)
+            xhr.setRequestHeader("content-type", "application/json;charset=utf-8")
+            //en caso de que vaya a hacer algún cambio o creación.. de lo contrario, si no le paso nada, desestima este envío (por ej en el GET)
+            xhr.send(JSON.stringify(data))
+        }
+        //función para traerme todos los elementos al inicio de la página
+        const getAll = () => {
+            //acá utilizo la función ajax y le paso las opciones para un GET
+            ajax({
+                url: "http://localhost:3000/santos",
+                success: (res) => {
+                    console.log(res)
+                    res.forEach(santo => {
+                        $template.querySelector(".name").textContent = santo.nombre
+                        $template.querySelector(".constellation").textContent = santo.constelacion
+                        $template.querySelector(".edit").dataset.id = santo.id
+                        $template.querySelector(".edit").dataset.name = santo.nombre
+                        $template.querySelector(".edit").dataset.constellation = santo.constelacion
+                        $template.querySelector(".delete").dataset.id = santo.id
+                        $template.querySelector(".delete").dataset.name = santo.nombre
+
+                        let $clone = d.importNode($template, true) //el true es para traerlo con el contenido
+                        $fragment.appendChild($clone)
+                    });
+                    $table.querySelector("tbody").appendChild($fragment)
+                },
+                error: (err) => {
+                    console.log(err)
+                    $table.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`)
+                },
+            })
+        }
+        //al inicio de la página va a hacer el get y va a traer todos los datos
+        d.addEventListener("DOMContentLoaded", getAll)
+        d.addEventListener("click", e => {
+            if (e.target.matches(".edit")) {
+                $title.textContent = "Editar Santo"
+                //lo puedo hacer así tambien = e.target.dataset.name y e.target.dataset.constellation
+                $form.nombre.value = e.target.getAttribute("data-name")
+                $form.constelacion.value = e.target.getAttribute("data-constellation")
+                //le cargo el id al input hidden para que al apretar submit detecte que va a editar
+                $form.id.value = e.target.getAttribute("data-id")
+            }
+            if (e.target.matches(".delete")) {
+                let respuesta = confirm(`Está seguro que desea eliminar a: ${e.target.getAttribute("data-name")}`)
+                if (respuesta) {
+                    ajax({
+                        method: "DELETE",
+                        url: `http://localhost:3000/santos/${e.target.getAttribute("data-id")}`,
+                        success: (res) => location.reload(),
+                        error: (err) => console.log(err),
+                    })
+                } else {
+                    alert("NO")
+                }
+
+            }
+        })
+        d.addEventListener("submit", e => {
+            if (e.target === $form) {
+                e.preventDefault()
+                if (!e.target.id.value) {
+                    //POST
+                    ajax({
+                        url: "http://localhost:3000/santos",
+                        method: "POST",
+                        success: (res) => location.reload(),
+                        error: (err) => {
+                            $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`)
+                        },
+                        data: {
+                            nombre: e.target.nombre.value,
+                            constelacion: e.target.constelacion.value
+                        }
+
+                    })
+                } else {
+                    //PUT
+                    ajax({
+                        method: "PUT",
+                        url: `http://localhost:3000/santos/${e.target.id.value}`,
+                        success: (res) => location.reload(),
+                        error: (err) => console.log(err),
+                        data: {
+                            nombre: e.target.nombre.value,
+                            constelacion: e.target.constelacion.value
+                        }
+
+                    })
+                }
+            }
+        })
 
     </script>
 </body>
