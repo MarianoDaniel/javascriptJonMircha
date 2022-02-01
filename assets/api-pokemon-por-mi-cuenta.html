@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemons</title>
+    <style>
+        .loader {
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pokemons</h1>
+    <nav class="links"></nav>
+    <main class="grid-fluid"></main>
+    <script>
+        const d = document,
+            $main = d.querySelector("main"),
+            $links = d.querySelector(".links");
+
+        let pokeApi = "https://pokeapi.co/api/v2/pokemon/"
+
+        async function loadPokemons(url) {
+            try {
+                $main.innerHTML = `<img class="loader" src="../practicas/assets/Half-Moon-Loading.svg" alt="Cargando...">  `
+
+                let res = await fetch(url),
+                    json = await res.json(),
+                    $template = "",
+                    $prevLink,
+                    $nextLink;
+
+                console.log(json)
+                if (!res.ok) throw { status: res.status, statusText: res.statusText }
+                $nextLink = json.next
+                $prevLink = json.previous
+                let peticiones = []
+                json.results.forEach(pokemon => {
+                    peticiones.push(fetch(pokemon.url))
+                });
+            /*     console.log("Peticiones", peticiones)
+                let pokemonPromise = await Promise.all(peticiones)
+                console.log("pokemonPromise Response", pokemonPromise)
+
+                let pokeJson = await Promise.all(pokemonPromise.map(p => p.json()))
+
+                console.log("pokeJson", pokeJson) */
+
+                Promise.all(peticiones)
+                .then(pokemones =>{
+                    console.log("pokemones", pokemones)
+                    Promise.all(pokemones.map(p =>{
+                        p.json().then(pokeJson => {
+                        console.log(pokeJson)
+                    })
+                    }))
+                    
+                })
+
+
+
+            } catch (error) {
+                console.log(error)
+                let message = error.statusText || "Ocurrió un error"
+                $main.innerHTML = `<p>Error ${error.status}: ${message}`
+            }
+        }
+        d.addEventListener("DOMContentLoaded", e => loadPokemons(pokeApi))
+    </script>
+</body>
+
+</html>
