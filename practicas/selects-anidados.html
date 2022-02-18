@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selects Anidados</title>
+</head>
+
+<body>
+    <h1>Selects Anidados</h1>
+    <h2>México</h2>
+    <label for="select-primary">Estados</label>
+    <select name="primary" id="select-primary">
+        <option value="">Elige un Estado</option>
+    </select>
+    <label for="select-secondary">Municipios</label>
+    <select name="secondary" id="select-secondary">
+        <option value="">Elige un Municipio</option>
+    </select>
+    <!--Para agregar los errores,si los hubiere, en la carga de los datos -->
+    <p></p>
+    <script>
+        const d = document,
+            $selectPrimary = d.getElementById("select-primary"),
+            $selectSecondary = d.getElementById("select-secondary");
+
+        function loadStates() {
+            fetch("https://api.copomex.com/query/get_estados?token=pruebas")
+                .then(res => res.ok
+                    ? res.json()
+                    : Promise.reject(res))
+                .then(json => {
+                    console.log(json)
+                    let $options = `<option value =""> Elige un Estado </option>`
+                    json.response.estado.forEach(el => {
+                        $options += `<option value="${el}"> ${el} </option>`
+                    });
+                    $selectPrimary.innerHTML = $options
+                })
+                .catch(err => {
+                    console.log(err)
+                    let message = err.statusText || "Ocurrió un error"
+                    $selectPrimary.nextElementSibling.innerHTML = `Error ${err.status}: 
+                        ${message}`
+                })
+        }
+
+        function loadTowns(state) {
+            //el estado de cual queremos cargar los minicipios
+        }
+
+        d.addEventListener("DOMContentLoaded", loadStates)
+        $selectPrimary.addEventListener("change", e => loadTowns(e.target.value))
+
+
+    </script>
+</body>
+
+</html>
