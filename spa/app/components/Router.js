@@ -3,6 +3,7 @@ import { ajax } from "../helpers/ajax.js"
 import { PostCard } from "./PostCard.js";
 import { Post } from "./Post.js";
 import { SearchCard } from "./SearchCard.js";
+import { ContactForm } from "./ContactForm.js";
 
 const API = api();
 export async function Router() {
@@ -48,8 +49,7 @@ export async function Router() {
         })
 
     } else if (hash === "#/contacto") {
-        $main.innerHTML = "<h2>Sección de Contacto</h2>"
-
+        $main.appendChild(ContactForm())
     } else {
         $main.innerHTML = "<h2>Acá va a cargar el contenido del Post previamente seleccionado</h2>"
         await ajax({
